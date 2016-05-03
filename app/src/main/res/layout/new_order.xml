@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/order_div"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:layout_margin="15dp">
+
+        <TextView
+            android:id="@+id/order_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="@string/order_text"
+            android:textColor="@color/black"
+            android:textSize="80px"/>
+
+        <ImageButton
+            android:id="@+id/order_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/ic_add_shopping_cart_black_48px"/>
+
+        <TextView
+            android:id="@+id/appointment_time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/appointment_time_text"
+            android:layout_below="@id/order_text"
+            android:layout_marginTop="20dp"
+            android:textSize="50px"/>
+
+        <TextView
+            android:id="@+id/earliest_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/earliest_text"
+            android:layout_marginRight="5dp"
+            android:textSize="50px"
+            android:layout_alignTop="@+id/appointment_time_text"
+            android:layout_alignEnd="@+id/order_button" />
+
+        <TextView
+            android:id="@+id/appointment_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/appointment_time"
+            android:layout_marginRight="5dp"
+            android:textSize="50px"
+            android:layout_alignTop="@+id/earliest_time"
+            android:layout_alignEnd="@+id/earliest_text" />
+
+        <TextView
+            android:id="@+id/earliest_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/appointment_time"
+            android:layout_below="@id/earliest_text"
+            android:layout_marginTop="20dp"
+            android:textSize="50px"/>
+
+        <CheckBox
+            android:id="@+id/door_service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/door_service"
+            android:layout_below="@id/appointment_time"
+            android:layout_marginTop="20dp"
+            android:textSize="50px"/>
+
+        <TextView
+            android:id="@+id/phone_number_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone_number_text"
+            android:layout_below="@id/door_service" />
+
+        <AutoCompleteTextView
+            android:id="@+id/phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/phone_number_text"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+    </RelativeLayout>
+</LinearLayout>
