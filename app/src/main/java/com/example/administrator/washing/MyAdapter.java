@@ -9,6 +9,7 @@ import android.widget.TextView;
 /**
  * Created by Administrator on 2016/5/3.
  */
+
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>
 {
     private String[] mDataset;
