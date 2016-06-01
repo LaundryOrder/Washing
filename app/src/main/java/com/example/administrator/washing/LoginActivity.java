@@ -82,10 +82,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener()
+        {
             @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
+            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent)
+            {
+                if (id == R.id.login || id == EditorInfo.IME_NULL)
+                {
                     attemptLogin();
                     return true;
                 }
@@ -102,14 +105,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 email_txt = mEmailView.getText().toString().trim();//得到邮件
                 password_txt = mPasswordView.getText().toString().trim();//得到密码
                 HashMap map = new HashMap();
-                map.put("username","test");
-                map.put("password","123456");
-                Token = LoginServlet.postRequest(LoginServlet.LoginServlet(map));
-
-                Intent intent = new Intent();
-                intent.setClass(LoginActivity.this,OrderListActivity.class);
-                intent.putExtra("Token",Token);
-                LoginActivity.this.startActivity(intent);
+                map.put("username",email_txt);
+                map.put("password",password_txt);
+                if(mAuthTask != null)
+                {
+                    Token = LoginServlet.postRequest(LoginServlet.LoginServlet(map));
+                    if(Token != null)
+                    {
+                        Intent intent = new Intent();
+                        intent.setClass(LoginActivity.this, OrderListActivity.class);
+                        intent.putExtra("Token", Token);
+                        LoginActivity.this.startActivity(intent);
+                    }
+                }
             }
         });
 
@@ -168,7 +176,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     private void attemptLogin()
     {
-        if (mAuthTask != null) {
+        if (mAuthTask != null)
+        {
             return;
         }
 
@@ -191,21 +200,27 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
 
         // Check for a valid email address.
-        if (TextUtils.isEmpty(email)) {
+        if (TextUtils.isEmpty(email))
+        {
             mEmailView.setError(getString(R.string.error_field_required));
             focusView = mEmailView;
             cancel = true;
-        } else if (!isEmailValid(email)) {
+        }
+        else if (!isEmailValid(email))
+        {
             mEmailView.setError(getString(R.string.error_invalid_email));
             focusView = mEmailView;
             cancel = true;
         }
 
-        if (cancel) {
+        if (cancel)
+        {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
             focusView.requestFocus();
-        } else {
+        }
+        else
+        {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);

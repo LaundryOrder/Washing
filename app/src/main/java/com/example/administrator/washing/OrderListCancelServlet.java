@@ -1,5 +1,4 @@
 package com.example.administrator.washing;
-
 import android.support.annotation.Nullable;
 
 import org.json.JSONException;
@@ -12,23 +11,22 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.HashMap;
-
 /**
- * Created by Administrator on 2016/5/2.
+ * Created by Administrator on 2016/5/7.
  */
-public class OrderListServlet
+public class OrderListCancelServlet
 {
-    @Nullable
-    public static JSONObject postRequest(String Token)
+    public static JSONObject CancelOrderList(String Token,String order_id)
     {
         JSONObject ResMessage = null;
         int ResCode = 0;
+
         try
         {
-            URL url = new URL("http://bj.cn.atarss.com:8233/orders");
+
+            URL url = new URL("http://bj.cn.atarss.com:8233/order/"+order_id);
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
-            con.setRequestMethod("GET");
+            con.setRequestMethod("DELETE");
             con.setReadTimeout(5000);
             String token = "Token "+Token;
             con.setRequestProperty("Authorization",token);

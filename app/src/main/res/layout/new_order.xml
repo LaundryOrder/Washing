@@ -74,20 +74,45 @@
             android:layout_marginTop="20dp"
             android:textSize="50px"/>
 
-        <TextView
+       <!-- <TextView
             android:id="@+id/phone_number_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/phone_number_text"
-            android:layout_below="@id/door_service" />
-
-        <AutoCompleteTextView
-            android:id="@+id/phone_number"
+            android:visibility="invisible"
+            android:layout_below="@id/door_service" />-->
+        <android.support.design.widget.TextInputLayout
+            android:id = "@+id/Phone_txt"
+            android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/phone_number_text"
-            android:maxLines="1"
-            android:singleLine="true" />
+            android:layout_below="@id/door_service">
+            <AutoCompleteTextView
+                android:id="@+id/phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint = "Phone Number"
+                android:visibility="invisible"
+                android:layout_below="@id/door_service"
+                android:maxLines="1"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
 
+        <android.support.design.widget.TextInputLayout
+            android:id = "@+id/Address_txt"
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Phone_txt">
+            <AutoCompleteTextView
+                android:id="@+id/address"
+                android:layout_below="@id/phone_number"
+                android:layout_width="match_parent"
+                android:hint="Address"
+                android:visibility="invisible"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
     </RelativeLayout>
 </LinearLayout>

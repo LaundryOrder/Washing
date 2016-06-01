@@ -1,10 +1,6 @@
 package com.example.administrator.washing;
-
-import android.support.annotation.Nullable;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,43 +8,34 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.HashMap;
-
 /**
- * Created by Administrator on 2016/5/2.
+ * Created by Administrator on 2016/5/27.
  */
-public class OrderListServlet
+public class NewOrderServlet
 {
-    @Nullable
-    public static JSONObject postRequest(String Token)
+    public static int postRequest(JSONObject json,String Token)
     {
         JSONObject ResMessage = null;
         int ResCode = 0;
         try
         {
-            URL url = new URL("http://bj.cn.atarss.com:8233/orders");
+            URL url = new URL("http://bj.cn.atarss.com:8233/order");
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
-            con.setRequestMethod("GET");
+            byte [] js = json.toString().getBytes();
+            con.setRequestMethod("POST");
             con.setReadTimeout(5000);
             String token = "Token "+Token;
             con.setRequestProperty("Authorization",token);
-            con.connect();
+            con.setRequestProperty("Content-Type", "application/json");
+            con.setRequestProperty("Content-Length",String.valueOf(js.length));
+            OutputStream outStream = con.getOutputStream();
+            outStream.write(js);
+            outStream.close();
             ResCode = con.getResponseCode();
             String RsLine = "";
             String RsString = "";
             java.io.InputStream is = con.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-            if(ResCode == 200)
-            {
-                while ((RsLine = reader.readLine()) != null)
-                {
-                    if (RsLine.length() > 0)
-                    {
-                        RsString = RsString + RsLine.trim();
-                    }
-                }
-                ResMessage = new JSONObject(RsString);
-            }
         }
         catch (MalformedURLException e)
         {
@@ -58,10 +45,6 @@ public class OrderListServlet
         {
             e.printStackTrace();
         }
-        catch (JSONException e)
-        {
-            e.printStackTrace();
-        }
-        return ResMessage;
+        return ResCode;
     }
 }

@@ -29,7 +29,7 @@ public class LoginServlet
         int ResCode = 0;
         try
         {
-            URL url = new URL("http://bj.cn.atarss.com:8233/login");
+            URL url = new URL("http://bj.cn.atarss.com:8233/token");
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
             byte [] js = json.toString().getBytes();
             con.setRequestMethod("POST");

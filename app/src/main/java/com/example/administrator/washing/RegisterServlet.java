@@ -27,16 +27,6 @@ public class RegisterServlet
 
         JSONObject json = new JSONObject(map);
         json.toString();
-
-        //String json = "{";
-        //for (Iterator it = map.entrySet().iterator(); it.hasNext();)
-        //{
-        //    Entry e = (Entry) it.next();
-        //    json += "\"" + e.getKey() + "\":";
-       //     json += "\"" + e.getValue() + "\",";
-       // }
-        //json = json.substring(0, json.lastIndexOf(","));
-       // json += "}";
         return json;
     }
     public static String postRequest(JSONObject json)

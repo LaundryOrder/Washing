@@ -1,10 +1,6 @@
 package com.example.administrator.washing;
-
-import android.support.annotation.Nullable;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,21 +8,19 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.HashMap;
-
 /**
- * Created by Administrator on 2016/5/2.
+ * Created by Administrator on 2016/5/27.
  */
-public class OrderListServlet
+public class NewOrderCreateServlet
 {
-    @Nullable
     public static JSONObject postRequest(String Token)
     {
         JSONObject ResMessage = null;
         int ResCode = 0;
+        URL url = null;
         try
         {
-            URL url = new URL("http://bj.cn.atarss.com:8233/orders");
+            url = new URL("http://bj.cn.atarss.com:8233/avail");
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
             con.setRequestMethod("GET");
             con.setReadTimeout(5000);
@@ -64,4 +58,5 @@ public class OrderListServlet
         }
         return ResMessage;
     }
+
 }
